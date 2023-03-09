@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html
+	lang="en">
+
+	<!-- Mirrored from preclinic.dreamguystech.com/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Jan 2023 19:17:03 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/logo10.jpg">
+		<title>MedTeck</title>
+		<link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
+		<link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.min.css') }}">
+
+		<link rel="stylesheet" href="{{ asset('assets/plugins/datatables/datatables.min.css') }}">
+
+		<link rel="stylesheet" href="{{ asset('assets/plugins/feather/feather.css') }}">
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+		<link href="{{ asset('admin/assets/css/colors.min.css') }}" rel="stylesheet" type="text/css"/> {% block style %}{% endblock %}
+		<script src="{{ asset('admin/global_assets/js/main/jquery.min.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/loaders/blockui.min.js') }}"></script>
+		<!-- /core JS files -->
+
+		<!-- Theme JS files -->
+		<script src="{{ asset('admin/global_assets/js/plugins/visualization/d3/d3.min.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/visualization/d3/d3_tooltip.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+
+		<script src="{{ asset('admin/assets/js/app.js') }}"></script>
+		<script src="{{ asset('admin/global_assets/js/demo_pages/dashboard.js') }}"></script>
+	<script src="{{ asset('admin/global_assets/js/plugins/tables/datatables/datatables.min.js') }}"> </script>
+	<script src="{{ asset('admin/global_assets/js/demo_pages/datatables_basic.js') }}"> </script> 
+	</head>
+	<body>
+		<div class="main-wrapper">
+			<div class="header">
+				<div class="header-left">
+					<a href="" class="logo">
+						<img src="assets/img/logo10.jpg" width="100%" height="100%" alt="">
+
+					</a>
+				</div>
+				<a id="toggle_btn" href="javascript:void(0);"><img src="assets/img/icons/bar-icon.svg" alt=""></a>
+				<a id="mobile_btn" class="mobile_btn float-start" href="#sidebar"><img src="assets/img/icons/bar-icon.svg" alt=""></a>
+				<div class="top-nav-search mob-view">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
+					</form>
+				</div>
+				<ul class="nav user-menu float-end">
+					<li class="nav-item dropdown d-none d-sm-block">
+						<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"><img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse"></span>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="topnav-dropdown-header">
+								<span>Notifications</span>
+							</div>
+							<div class="drop-scroll">
+								
+							</div>
+							<div class="topnav-dropdown-footer">
+								<a href="activities.html">View all Notifications</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown d-none d-sm-block">
+						<a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><img src="assets/img/icons/note-icon-01.svg" alt=""><span class="pulse"></span>
+						</a>
+					</li>
+					<li class="nav-item dropdown has-arrow user-profile-list">
+						<a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
+							<div class="user-names">
+								<h5>Liam Michael
+								</h5>
+								<span>Admin</span>
+							</div>
+							<span class="user-img">
+								<img src="assets/img/user-06.jpg" alt="Admin">
+							</span>
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="login.html">Logout</a>
+						</div>
+					</li>
+					<li class="nav-item ">
+						<a href="settings.html" class="hasnotifications nav-link"><img src="assets/img/icons/setting-icon-01.svg" alt="">
+						</a>
+					</li>
+				</ul>
+				<div class="dropdown mobile-user-menu float-end">
+					<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fa-solid fa-ellipsis-vertical"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end">
+						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+						<a class="dropdown-item" href="settings.html">Settings</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div>
+				</div>
+			</div>
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title">Main</li>
+							<li class="submenu">
+								<a href="base.html.twig">
+									<span class="menu-side"><img src="assets/img/icons/menu-icon-01.svg" alt=""></span>
+									<span>
+										Dashboard
+									</span>
+
+								</a>
+
+							</li>
+							<li class="submenu">
+								<a href="#">
+									<span class="menu-side"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>
+									<span>
+										 Utulisateurs
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="#">Admin</a>
+									</li>
+									<li>
+										<a href="#">Medecin</a>
+									</li>
+									
+
+								</ul>
+							</li>
+							
+							
+
+
+							<li class="submenu">
+								<a href="#">
+									<span class="menu-side"><img src="assets/img/icons/menu-icon-06.svg" alt=""></span>
+									<span>
+										Ressources
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="#">Fournisseurs</a>
+									</li>
+									<li>
+										<a href="#">Stock</a>
+									</li>
+									
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#">
+									<span class="menu-side"><img src="assets/img/icons/menu-icon-13.svg" alt=""></span>
+									<span>
+										Finances</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="#">tab1</a>
+									</li>
+									
+									<li>
+										<a href="#">tab2</a>
+									</li>
+									
+								</ul>
+							</li>
+                            <li class="submenu">
+								<a href="#">
+									<span class="menu-side"><img src="assets/img/icons/menu-icon-06.svg" alt=""></span>
+									<span>
+										Consultations
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="#">tab1</a>
+									</li>
+									<li>
+										<a href="#">tab2</a>
+									</li>
+									
+								</ul>
+							</li>
+
+
+							<ul style="display: none;">
+
+								<li>
+									<a href="register.html">
+										Register
+									</a>
+								</li>
+								<li>
+									<a href="forgot-password.html">
+										Forgot Password
+									</a>
+								</li>
+								<li>
+									<a href="change-password2.html">
+										Change Password
+									</a>
+								</li>
+
+								<li>
+									<a href="profile.html">
+										Profile
+									</a>
+								</li>
+								<li>
+									<a href="gallery.html">
+										Gallery
+									</a>
+								</li>
+
+
+							</ul>
+						</li>
+
+					</ul>
+					<div class="logout-btn">
+						<a href="login.html">
+							<span class="menu-side"><img src="assets/img/icons/logout.svg" alt=""></span>
+							<span>Logout</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-wrapper">
+			<div class="content">
+
+				<div class="page-header">
+					<div class="row">
+						<div class="col-sm-12">
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="index.html">Dashboard
+									</a>
+								</li>
+								<li class="breadcrumb-item">
+									<i class="feather-chevron-right"></i>
+								</li>
+								<li class="breadcrumb-item active">Admin Dashboard</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="good-morning-blk">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="morning-user">
+								<h2>Good Morning,
+									<span>Daniel Bruk</span>
+								</h2>
+								<p>Have a nice day at work</p>
+							</div>
+						</div>
+						<div class="col-md-6 position-blk">
+							<div class="morning-img">
+								<img src="assets/img/morning-img-01.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-6 col-xl-9" style="width: 50%;">
+						<div class="card">
+							<div class="card-body">
+								<div class="card top-departments">
+									<div class="card-header">
+										<h4 class="card-title mb-0">Top Departments</h4>
+									</div>
+									<div class="card-body">
+										<div class="activity-top">
+											<div class="activity-boxs comman-flex-center">
+												<img src="assets/img/icons/dep-icon-01.svg" alt="">
+											</div>
+											<div class="departments-list">
+												<h4>General Physician</h4>
+												<p>35%</p>
+											</div>
+										</div>
+										<div class="activity-top">
+											<div class="activity-boxs comman-flex-center">
+												<img src="assets/img/icons/dep-icon-02.svg" alt="">
+											</div>
+											<div class="departments-list">
+												<h4>Dentist</h4>
+												<p>24%</p>
+											</div>
+										</div>
+										<div class="activity-top">
+											<div class="activity-boxs comman-flex-center">
+												<img src="assets/img/icons/dep-icon-03.svg" alt="">
+											</div>
+											<div class="departments-list">
+												<h4>ENT</h4>
+												<p>10%</p>
+											</div>
+										</div>
+										<div class="activity-top">
+											<div class="activity-boxs comman-flex-center">
+												<img src="assets/img/icons/dep-icon-04.svg" alt="">
+											</div>
+											<div class="departments-list">
+												<h4>Cardiologist</h4>
+												<p>15%</p>
+											</div>
+										</div>
+										<div class="activity-top mb-0">
+											<div class="activity-boxs comman-flex-center">
+												<img src="assets/img/icons/dep-icon-05.svg" alt="">
+											</div>
+											<div class="departments-list">
+												<h4>Opthomology</h4>
+												<p>20%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-6 col-xl-3 d-flex" style="width: 50%;">
+						<div class="card">
+							<div class="card-body">
+								<div class="chart-title">
+									<h4>Patient by Department</h4>
+								</div>
+								<div id="donut-chart-dash" class="chart-user-icon">
+									<img src="assets/img/icons/user-icon.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-12  col-xl-4"></div>
+
+				</div>
+				<div class="row">
+					<div class="col-12 col-xl-12">
+						<div class="card">
+							<div class="card-header pb-0">
+								<h4 class="card-title d-inline-block">Recent Patients
+								</h4>
+								
+								<a href="patients.html" class="float-end patient-views">show all</a>
+							</div>
+							<div class="card-block table-dash">
+								<div class="table-responsive">
+								 <table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0"  ="grid" aria-describedby="DataTables_Table_0_info">
+								<div class="top-nav-search mob-view">
+<form>
+<input type="text" class="form-control" placeholder="Search here">
+<a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
+</form>
+</div>
+									{# <table class="table mb-0 border-0 datatable custom-table"> #}
+									
+										<thead>
+											<tr>
+												<th>
+													<div class="form-check check-tables">
+														<input class="form-check-input" type="checkbox" value="something">
+													</div>
+												</th>
+												<th>No</th>
+												<th>Patient name</th>
+												<th>Age</th>
+												<th>Date of Birth</th>
+												<th>Diagnosis</th>
+												<th>Triage</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<div class="form-check check-tables">
+														<input class="form-check-input" type="checkbox" value="something">
+													</div>
+												</td>
+												<td>R00001</td>
+												<td class="table-image">
+													<img width="28" height="28" class="rounded-circle" src="assets/img/profiles/avatar-02.jpg" alt="">
+													<h2>Andrea Lalema</h2>
+												</td>
+												<td>21</td>
+												<td>07 January 2002</td>
+												<td>Heart attack</td>
+												<td>
+													<button class="custom-badge status-green ">Non Urgent</button>
+												</td>
+												<td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="edit-patient.html">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+																Edit</a>
+															<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_appointment">
+																<i class="fa fa-trash-alt m-r-5"></i>
+																Delete</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check check-tables">
+														<input class="form-check-input" type="checkbox" value="something">
+													</div>
+												</td>
+												<td>R00002</td>
+												<td class="table-image">
+													<img width="28" height="28" class="rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="">
+													<h2>Mark Hay Smith</h2>
+												</td>
+												<td>23</td>
+												<td>06 January 2002</td>
+												<td>Jaundice</td>
+												<td>
+													<button class="custom-badge status-pink">Emergency</button>
+												</td>
+												<td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="edit-patient.html">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+																Edit</a>
+															<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_appointment">
+																<i class="fa fa-trash-alt m-r-5"></i>
+																Delete</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check check-tables">
+														<input class="form-check-input" type="checkbox" value="something">
+													</div>
+												</td>
+												<td>R00003</td>
+												<td class="table-image">
+													<img width="28" height="28" class="rounded-circle" src="assets/img/profiles/avatar-04.jpg" alt="">
+													<h2>Cristina Groves</h2>
+												</td>
+												<td>25</td>
+												<td>10 January 2002</td>
+												<td>Malaria</td>
+												<td>
+													<button class="custom-badge status-gray">Out Patient</button>
+												</td>
+												<td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="edit-patient.html">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+																Edit</a>
+															<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_appointment">
+																<i class="fa fa-trash-alt m-r-5"></i>
+																Delete</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check check-tables">
+														<input class="form-check-input" type="checkbox" value="something">
+													</div>
+												</td>
+												<td>R00004</td>
+												<td class="table-image">
+													<img width="28" height="28" class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" alt="">
+													<h2>Galaviz Lalema</h2>
+												</td>
+												<td>21</td>
+												<td>09 January 2002</td>
+												<td>Typhoid</td>
+												<td>
+													<button class="custom-badge status-orange">Non Urgent</button>
+												</td>
+												<td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="edit-patient.html">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+																Edit</a>
+															<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_appointment">
+																<i class="fa fa-trash-alt m-r-5"></i>
+																Delete</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="notification-box">
+				<div class="msg-sidebar notifications msg-noti">
+					<div class="topnav-dropdown-header">
+						<span>Messages</span>
+					</div>
+					<div class="drop-scroll msg-list-scroll" id="msg_list">
+						
+					</div>
+					<div class="topnav-dropdown-footer">
+						<a href="chat.html">See all messages</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html></div><div class="sidebar-overlay" data-reff=""></div><script src="{{ asset('assets/js/jquery-3.6.1.min.js') }}"></script><script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script><script src="{{ asset('assets/js/feather.min.js') }}"></script><script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script><script src="{{ asset('assets/js/select2.min.js') }}"></script><script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script><script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script><script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script><script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script><script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script><script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script><script src="{{ asset('assets/js/app.js') }}"></script></body><!-- Mirrored from preclinic.dreamguystech.com/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Jan 2023 19:19:21 GMT --></html>
+

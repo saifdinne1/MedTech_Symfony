@@ -1,0 +1,30 @@
+<p>Voila la liste de tout les fournisseurs</p>
+<table class="table" border="2" position="center" >
+    <thead>
+    <tr>
+            <th>Noms</th>
+            <th>Prenoms</th>
+            <th>Emails</th>
+            <th>Tel</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for a in fournisseurs%}
+        <tr>
+            <td> {{a.nom }}</td>
+            <td> {{a.prenom }} </td>
+            <td> {{a.email}} </td>
+            <td> {{a.tel}} </td>
+            </tr>
+    {% else %}
+        <tr>
+            <td colspan="8">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+</div>

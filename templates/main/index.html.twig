@@ -1,0 +1,52 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+{% block  contenu %}
+{% block stylesheets %}
+    <style>
+    #calendrier{
+        width: 60%;
+        margin: auto;
+    }
+    </style>
+{% endblock %}
+
+
+<dic id="calendrier">
+</div>
+
+
+{% block javascript %}
+<script>
+   window.onload = () => {
+    let calendarElt = document.querySelector("#calendrier")
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'dayGridMonth',
+            locale: 'fr',
+            timeZone: 'Europe/Paris',
+            
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+           
+            events: {{ data|raw}},
+            editable: true,
+            eventResibleFromDate: true
+           
+           
+        })
+
+        
+        
+
+
+         
+        
+        calendar.render()
+   }
+</script>
+
+{% endblock %}
+{% endblock %}

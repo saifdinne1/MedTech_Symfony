@@ -1,0 +1,50 @@
+{% extends 'dashboard.html.twig' %} 
+
+{% block title %}Chambre index{% endblock %}
+
+{% block contenu %}
+    <h1>Chambre index</h1>
+
+   <!-- Table with stripped rows -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <table id="myTable" class="table table-striped">
+    <thead>
+    <tr>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero_chambre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <input id="myInput" type="text" value="" name="Search" class="form-control" placeholder="Are you Looking for chambre?" autofocus>
+        {% for chambre in chambres %}
+            <tr>
+                <td>{{ chambre.id }}</td>
+                <td>{{ chambre.numeroChambre }}</td>
+                <td>
+                    <a href="{{ path('app_chambre_show', {'id': chambre.id}) }}">show</a>
+                    <a href="{{ path('app_chambre_edit', {'id': chambre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chambre_new') }}">Create new</a>
+{% endblock %}

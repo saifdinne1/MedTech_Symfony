@@ -1,0 +1,124 @@
+
+
+{% block contenu %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Facture {{ facture.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin: 20px;
+        }
+        
+        .facture-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .facture-header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #006699;
+        }
+        
+        .facture-header p {
+            margin: 0;
+            color: #777777;
+        }
+        
+        .facture-details {
+            margin-bottom: 20px;
+        }
+        
+        .facture-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .facture-details table th,
+        .facture-details table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #CCCCCC;
+        }
+        
+        .facture-details table th {
+            font-weight: bold;
+            background-color: #F5F5F5;
+        }
+        
+        .facture-total {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .facture-total p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .facture-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777777;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="facture-header">
+            <div>
+                <h1>Facture {{ facture.id }}</h1>
+                <p>Date: {{ facture.dateFacture|date('d/m/Y') }}</p>
+            </div>
+            <div>
+                <p>{{ facture.numeroFacture }}</p>
+      
+            </div>
+        </div>
+        
+        <div class="facture-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>designation</th>
+                     
+                        <th>Prix designation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                        <tr>
+                            <td>{{ facture.designation }}</td>
+                           
+                            <td>{{ facture.prixDesignation }} dt</td>
+                            <td>{{ facture.montant}} dt</td>
+                        </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="facture-total">
+            <p>Total: {{ facture.montant }} dt</p>
+        </div>
+        
+        <div class="facture-footer">
+            <p>BIENVENUE DANS MEDTECH</p>
+            <p>votre santé est notre priorite</p>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block body %}
+<div>
+<div >-------------------------------------------------------</div>
+<div class="center" style=" font-style: normal; color: rgb(75, 100, 86); ">les services</div>
+ {% for ser in services %}
+<h1 style="font-weight: 700; font-style: italic; color: rgb(75, 100, 86); "> service{{ser.id}} :{{ ser.nomService }}</h1> 
+ {% endfor %}
+<div >-----------------------------</div>
+
+
+
+
+<div >-------------------------------------------------------</div>
+</div>
+
+    
+{% endblock %}

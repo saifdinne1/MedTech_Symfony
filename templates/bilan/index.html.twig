@@ -1,0 +1,44 @@
+{% extends 'dashboard.html.twig' %} 
+
+{% block title %}Bilan index{% endblock %}
+
+{% block contenu %}
+    <h1>Bilan index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Cahrge</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bil in bilan %}
+            <tr>
+                <td>{{ bil.id }}</td>
+                <td>{{ bil.dateDebut ? bil.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ bil.dateFin ? bil.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ bil.cahrge }}</td>
+                <td>
+                    <a href="{{ path('app_bilan_show', {'id': bil.id}) }}">show</a>
+                    <a href="{{ path('app_bilan_edit', {'id': bil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+
+    <a href="{{ path('app_bilan_new') }}">Create new</a>
+     <div class="d-flex justify-content-center">
+ {{ knp_pagination_render(bilan) }}
+
+</div>
+{% endblock %}

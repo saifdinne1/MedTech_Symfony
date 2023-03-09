@@ -1,0 +1,57 @@
+{% extends 'dashboard.html.twig' %} 
+
+{% block title %}Bilan{% endblock %}
+
+{% block contenu %}
+    <h1>Bilan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bilan.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ bilan.dateDebut ? bilan.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ bilan.dateFin ? bilan.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cahrge</th>
+                <td>{{ bilan.cahrge }}</td>
+            </tr>
+            <tr>
+            <tr>
+            <th>numero facture</th>
+                <td>montant</td>
+            </tr>
+                 {% for ab in factures %} 
+                {% if ab.DateFacture > bilan.dateDebut  or ab.DateFacture == bilan.dateDebut %}  
+                {% if ab.DateFacture < bilan.dateFin  or ab.DateFacture == bilan.dateFin %}  
+                <th>{{ab.id}}</th>
+                <td>{{ab.montant}}</td>
+         
+                <tr></tr>
+                 {% endif %}
+                  {% endif %}
+                  {% endfor %}
+
+                 {# <td>{{ bilan.vente }}</td>  #}
+            </tr>
+              <tr>
+              
+                <th>etat des resulats</th>
+                <td>{{ somm }}</td> 
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bilan_index') }}">back to list</a>
+
+    {# <a href="{{ path('app_bilan_edit', {'id': bilan.id}) }}">edit</a> #}
+
+    {# {{ include('bilan/_delete_form.html.twig') }} #}
+{% endblock %}

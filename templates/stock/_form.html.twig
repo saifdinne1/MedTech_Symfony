@@ -1,0 +1,56 @@
+<div class="container">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <div class="form-group">
+    {{ form_label(form.titre, "Titre stock")  }}
+    {{ form_widget(form.titre,({'class':'form-control'})) }}
+    {% if form_errors(form.titre) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.titre) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="form-group">
+    {{ form_label(form.type, "Type stock")  }}
+    {{ form_widget(form.type,({'class':'form-control'})) }}
+    {% if form_errors(form.type) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.type) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="form-group">
+    {{ form_label(form.quantite, "Quantité")  }}
+    {{ form_widget(form.quantite,({'class':'form-control'})) }}
+    {% if form_errors(form.quantite) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.quantite) }}
+    </div>
+    {% endif %}
+    </div>
+
+    {#<div class="form-group">
+    {{ form_label(form.date, "Date")  }}
+    {{ form_widget(form.date,({'class':'form-control'})) }}
+    {% if form_errors(form.date) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.date) }}
+    </div>
+    {% endif %}
+    </div>#}
+
+    <div class="form-group">
+    {{ form_label(form.fournisseur, "Fournisseur")  }}
+    {{ form_widget(form.fournisseur,({'class':'form-control'})) }}
+    {% if form_errors(form.fournisseur) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.fournisseur) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <button class="btn btn-primary submit-btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+ </div>

@@ -1,0 +1,134 @@
+{% block body %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup Form</title>
+     <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+      }
+      
+      /* Blue Theme */
+      .blue-theme {
+        --primary-color: #2196F3;
+        --secondary-color: #fff;
+        --button-hover-color: #0d8bf2;
+        --button-active-color: #0b73d9;
+      }
+      .blue-theme form {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+      }
+      .blue-theme label {
+        color: var(--secondary-color);
+      }
+      .blue-theme input[type="text"], .blue-theme input[type="email"], .blue-theme input[type="password"], .blue-theme select {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+      }
+      .blue-theme input[type="submit"] {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        border: 2px solid var(--secondary-color);
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      }
+      .blue-theme input[type="submit"]:hover {
+        background-color: var(--button-hover-color);
+        border-color: var(--button-hover-color);
+        cursor: pointer;
+      }
+      .blue-theme input[type="submit"]:active {
+        background-color: var(--button-active-color);
+        border-color: var(--button-active-color);
+      }
+      
+      /* Form Styles */
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input[type="text"], input[type="email"], input[type="password"], select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        outline: none;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .form-group label {
+        float: left;
+        width: 30%;
+      }
+      .form-group input, .form-group select {
+        float: left;
+        width: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="cin">CIN:</label>
+        <input type="text" id="cin" name="cin" required>
+      </div>
+      <div class="form-group">
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex" required>
+          <option value="">Select...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+      </div>
+      <div class="form-group">
+      <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+{% endblock %} 

@@ -1,0 +1,109 @@
+{% extends 'dashboard.html.twig' %} 
+
+{% block title %}Fournisseur index{% endblock %}
+
+{% block contenu %}
+
+
+<input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+
+<br>
+<script>
+        function filterTable() {
+            const filter = document.getElementById('searchInput').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+    </script>
+ 
+    <h1>Fournisseur index</h1>
+   <a href="{{ path('PDF_Plat') }}" class="btn btn-outline-dark btn-sm"><i class="fas fa-print"></i>Imprimer la liste</a>
+<a href="{{ path('app_tri') }}" class="btn btn-outline-dark btn-sm"><i class="fas fa-sort-amount-up"></i>Trier par nom</a>
+
+    <table class="table datatable-basic table table-borderless hover-table" id="datatable">
+    <div class="card-body">
+							<div class="header-elements">
+        <thead class="thead-light">
+            <tr>
+            
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fournisseur in fournisseurs %}
+            <tr>
+            
+                <td>{{ fournisseur.id }}</td>
+                <td>{{ fournisseur.nom }}</td>
+                <td>{{ fournisseur.prenom }}</td>
+                <td>{{ fournisseur.email }}</td>
+                <td>{{ fournisseur.tel }}</td>
+                
+                <td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="{{ path('app_fournisseur_show', {'id': fournisseur.id}) }}" class="btn btn-sm bg-primary-light">
+																{#<i class="fa-solid fa-pen-to-square m-r-5"></i>#}
+																<i class="far fa-eye"></i>
+                                                                Show
+                                                                </a>
+
+                                                                <a class="dropdown-item" href="{{ path('app_fournisseur_edit', {'id': fournisseur.id}) }}" class="btn btn-sm bg-primary-light">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit
+                                                                </a>
+
+
+
+															<a class="dropdown-item" href="#"  class="btn btn-sm bg-primary-light" >
+																<i class="fa fa-trash-alt m-r-5"></i>
+																{{ include('fournisseur/_delete_form.html.twig') }}
+                                                                </a>
+														</div>
+													</div>
+												</td>
+                
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<style>
+.ss {
+    background-color: #00d3c7;
+    border: 1px solid #00d3c7;
+    color: #fff;
+
+}
+</style>
+  <button>  <a href="{{ path('app_fournisseur_new') }}">Create new</a> </button>
+
+
+
+ 
+    
+{% endblock %}

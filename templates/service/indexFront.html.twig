@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %} 
+
+
+
+{% block Service %}
+    
+
+ 
+    
+      
+        {% for service in services %}
+           
+             
+                <h1>{{ service.nomService }}</h1> </br>
+                
+
+         
+          
+        {% else %}
+            
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+   
+
+{% endblock %}

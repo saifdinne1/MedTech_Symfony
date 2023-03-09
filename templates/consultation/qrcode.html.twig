@@ -1,0 +1,5 @@
+{% block body %}
+    <h1>Code QR pour {{ ordonnance.description }}</h1>
+
+<img src="{{ qrCodeData }}" alt="Code QR de {{ ordonnance.description}}, {{ ordonnance.date|date('Y-m-d') }}" />
+{% endblock %}

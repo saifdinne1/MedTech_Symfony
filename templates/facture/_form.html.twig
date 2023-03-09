@@ -1,0 +1,33 @@
+{{ form_start(form , {'attr':{'novalidate':'novalidate'}}) }}
+<div class="form-group">
+      {{ form_label(form.date_facture) }}
+      {{ form_widget(form.date_facture) }} 
+      {{ form_errors(form.date_facture) }}
+      </div>
+<div class="form-group">
+      {{ form_label(form.numero_facture,'Nom Patient') }}
+      {{ form_widget(form.numero_facture) }} 
+      {{ form_errors(form.numero_facture) }} 
+</div>
+<div class="form-group">
+      {{ form_label(form.designation) }}
+      {{ form_widget(form.designation) }} 
+      {{ form_errors(form.designation) }}
+</div>
+<div class="form-group">
+      {{ form_label(form.prix_designation) }}
+      {{ form_widget(form.prix_designation) }} 
+      {{ form_errors(form.prix_designation) }}
+      </div>
+
+<div class="form-group">
+
+      {{ form_label(form.montant) }}
+      {{ form_widget(form.montant) }} 
+      {{ form_errors(form.montant) }}
+      </div>
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+    

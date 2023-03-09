@@ -1,0 +1,5 @@
+{% block contenu %}
+    <h1>Code QR pour {{ chambre.numeroChambre }}</h1>
+
+<img src="{{ qrCodeData }}" alt="Code QR de {{ chambre.numeroChambre}}, {{ chambre.serviceAffecter }}" />
+{% endblock %}

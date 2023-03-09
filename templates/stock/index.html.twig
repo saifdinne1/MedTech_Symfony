@@ -1,0 +1,140 @@
+ {% extends 'dashboard.html.twig' %} 
+
+
+
+{% block contenu %}
+<style>
+    .low-quantity {
+        color: red;
+    }
+
+
+    
+</style>
+
+
+<input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+<br>
+<script>
+        function filterTable() {
+            const filter = document.getElementById('searchInput').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+    </script>
+
+    <h1>Stock index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Quantite</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+        
+            <tr {% if stock.quantite < 5 %} class="low-quantity"{% endif %}>
+                <td>{{ stock.id }}</td>
+                <td>{{ stock.titre }}</td>
+                <td>{{ stock.type }}</td>
+                <td >{{ stock.quantite}} </td>
+                <td>{{ stock.date ? stock.date|date('Y-m-d') : '' }}</td>
+                
+                <td class="text-end">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+															<i class="fa fa-ellipsis-v"></i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="{{ path('app_stock_show', {'id': stock.id}) }}" class="btn btn-sm bg-primary-light">
+																{#<i class="fa-solid fa-pen-to-square m-r-5"></i>#}
+																<i class="far fa-eye"></i>
+                                                                Show
+                                                                </a>
+
+                                                                <a class="dropdown-item" href="{{ path('app_stock_edit', {'id': stock.id}) }}" class="btn btn-sm bg-primary-light">
+																<i class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit
+                                                                </a>
+
+
+
+															<a class="dropdown-item" href="#"  class="btn btn-sm bg-primary-light" >
+																<i class="fa fa-trash-alt m-r-5"></i>
+                                                                {{ include('stock/_delete_form.html.twig') }}
+                                                                </a>
+														</div>
+													</div>
+												</td>
+                
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_stock_new') }}">Create new</a>
+
+    <div class="chart-container" style="position: relative; height:50vh; width:100%;">
+                                         <canvas id="myChart" height="200" style="display: block; width: 400px; height: 200px;" width="400" class="chartjs-render-monitor"></canvas>
+                                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                         <script>
+                                           var ctx = document.getElementById('myChart').getContext('2d');
+                                           var myChart = new Chart(ctx, {     type: 'bar',
+                                            data: {
+                                            labels: [
+                                            {% for stockStat in stocksStats %}
+                                             "{{ stockStat.stock.type }}",
+                                            {% endfor %}  ],
+                                            datasets: [{
+                                            label: 'Pourcentage de quantites',
+                                            data: [
+                                           {% for stockStat in stocksStats %}
+                                           {{ stockStat.percentage }},
+                                           {% endfor %}    ],
+                                            backgroundColor: [
+                                           'rgba(255, 99, 132, 0.2)',
+                                           'rgba(54, 162, 235, 0.2)',
+                                           'rgba(255, 206, 86, 0.2)',
+                                           'rgba(75, 192, 192, 0.2)',
+                                           'rgba(153, 102, 255, 0.2)',
+                                           'rgba(255, 159, 64, 0.2)'    ],
+                                            borderColor: [
+                                           'rgba(255, 99, 132, 1)',
+                                           'rgba(54, 162, 235, 1)',
+                                           'rgba(255, 206, 86, 1)',
+                                           'rgba(75, 192, 192, 1)',
+                                           'rgba(153, 102, 255, 1)',
+                                           'rgba(255, 159, 64, 1)'   ],
+                                            borderWidth: 1    }]  },
+                                            options: {
+                                            scales: {
+                                            yAxes: [{
+                                            ticks: {
+                                            beginAtZero: true    }}]  }    }});
+                                           </script>     
+                                        </div>
+{% endblock %}

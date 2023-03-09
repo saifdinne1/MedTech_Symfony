@@ -1,0 +1,13 @@
+{{ form_start(form , {'attr':{'novalidate':'novalidate'}}) }}
+ <div class="form-group">
+      {{ form_label(form.nom_service) }}
+      {{ form_widget(form.nom_service) }} 
+      {{ form_errors(form.nom_service) }}
+</div>
+ <div class="form-group">
+      {{ form_label(form.type_service) }}
+      {{ form_widget(form.type_service) }} 
+      {{ form_errors(form.type_service) }}
+</div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

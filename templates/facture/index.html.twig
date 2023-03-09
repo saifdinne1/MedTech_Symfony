@@ -1,0 +1,90 @@
+{% extends 'dashboard.html.twig' %} 
+
+
+{% block contenu %}
+<h1>Facture index</h1>
+<div class="d-flex justify-content-center">
+   <form  method="post" action="{{ path('recherche') }}">
+    <label> date</label>
+        <input type="date" name="search" > <input type="submit"value="Rehcerche">
+    </form>
+</div>
+<br>
+
+<div class="d-flex justify-content-center">
+    <form method="post" action="{{ path('recherche_nom') }}">
+    <label> patient</label>
+        <input type="text" name="search"    placeholder="nom du patient"> <input type="submit"value="Rehcerche">
+    </form>
+    </div>
+    
+<br>
+<br>
+    <table class="table"  id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>nom du patient</th>
+                <th>Designation</th>
+                <th>Prix_designation</th>
+                <th>Date_facture</th>
+                <th>Montant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+               <td>{{ facture.numeroFacture }}</td> 
+                <td>{{ facture.designation }}</td>
+                <td>{{ facture.prixDesignation }}</td>
+                <td>{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') : '' }}</td>
+                <td>{{ facture.montant }}</td>
+                <td>
+                    <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
+                    <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_facture_new') }}">Create new</a> 
+    
+    
+    <div class="container py-5">
+		<div class="d-flex justify-content-center">
+ {{ knp_pagination_render(factures) }}
+
+</div>
+	</div> 
+
+       <script>
+        id="table"
+        function myFunction() {
+            var input, filter, table, tr, td, i,j, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+//   alert(td.length);
+            for (i = 0; i < tr.length; i++) {
+                td= tr[i].getElementsByTagName("td")[3];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+   
+{% endblock %} 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Produits</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">medteck</h1>
+<h2 style="text-align: center">Tableau de consultation</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+
+        <th >date debut </th>
+        <th >date fin </th>
+        <th >Description</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in consultation %}
+        <tr>
+            <td>{{ p.dateDebut|date('Y-m-d')}}</td>
+            <td>{{ p.dateFin|date('Y-m-d') }}</td>
+            <td>{{ p.discription }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

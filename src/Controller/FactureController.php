@@ -53,7 +53,7 @@ class FactureController extends AbstractController
 
         // Output the generated PDF to Browser (force download)
         $dompdf->stream("facture.pdf", [
-            "Attachment" => false
+            "Attachment" => true
         ]);
     }
 

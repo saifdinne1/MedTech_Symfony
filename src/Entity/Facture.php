@@ -27,7 +27,9 @@ class Facture
 
     #[ORM\Column(length: 20)]
     #[Assert\NotBlank(message:"champ obligatoire")]
-    private ?string $prix_designation = null;
+   
+    #[Assert\Type('integer')]
+    private ?int $prix_designation = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)] 
     // #[Assert\GreaterThan('today')]
@@ -35,7 +37,8 @@ class Facture
 
     #[ORM\Column(length: 20)]
     #[Assert\NotBlank(message:"champ obligatoire")]
-    private ?float $montant = null;
+    #[Assert\Type('integer')]
+    private ?int $montant = null;
 
     #[ORM\ManyToOne(inversedBy: 'factures')]
     private ?User $patient = null;
